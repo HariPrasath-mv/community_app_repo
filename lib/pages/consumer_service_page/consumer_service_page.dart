@@ -74,7 +74,7 @@ class ConsumerServicePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Consumer Services'),
+        title: const Text('Services'),
         centerTitle: true,
         backgroundColor: Color(0xFF279AF1),
       ),
@@ -106,7 +106,7 @@ class ConsumerServicePage extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   service['icon']!,
-                  height: 64,
+                  height: 130,
                   width: 64,
                 ),
                 const SizedBox(height: 8),

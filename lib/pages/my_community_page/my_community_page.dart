@@ -17,6 +17,8 @@ class MyCommunityPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Community'),
+        centerTitle: true,
+        backgroundColor: Color(0xFF279AF1),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

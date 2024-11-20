@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../Profile_page/profile_page.dart'; // Import ProfilePage
+import '../Profile_page/profile_page.dart';
+import 'ads_page.dart';
+import 'notification_page.dart'; // Import ProfilePage
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,22 +20,22 @@ class _HomePageState extends State<HomePage>
   final List<Map<String, String>> _ads = [
     {
       'image':
-          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
+          'https://images.unsplash.com/photo-1657664072464-e525da1d426e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'text': '50% Off on New Fashion Collection!',
     },
     {
       'image':
-          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
+          'https://images.unsplash.com/photo-1595461240565-1f5779bc1d2b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'text': 'Exclusive Deals for Community Members!',
     },
     {
       'image':
-          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
-      'text': "Upcoming Yoga Session: Dont Miss Out!",
+          'https://images.unsplash.com/photo-1628336707631-68131ca720c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'text': "Upcoming Yoga Session: Don’t Miss Out!",
     },
     {
       'image':
-          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
+          'https://images.unsplash.com/photo-1595877786670-393ef0ac0961?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       'text': 'Join the Gardening Club today!',
     },
   ];
@@ -99,7 +101,7 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color(0xFF279AF1),
+        backgroundColor: Colors.white,
         title: const Text(
           'Welcome, User!',
           style: TextStyle(
@@ -110,17 +112,29 @@ class _HomePageState extends State<HomePage>
           ),
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications, color: Colors.black),
+            onPressed: () {
+              // Navigate to NotificationPage
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NotificationPage(),
+                ),
+              );
+            },
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: () => _navigateToProfile(context),
               child: const CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E', // Replace with your image URL
+                  'https://via.placeholder.com/150', // Replace with your image URL
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -138,56 +152,70 @@ class _HomePageState extends State<HomePage>
                   });
                 },
                 itemBuilder: (context, index) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 18),
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFF9E4), // Background color
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 8,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                _ads[index]['text']!,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              const Text(
-                                'Explore ➔',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                  return GestureDetector(
+                    onTap: () {
+                      // Navigate to AdsPage with the ad details
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AdsPage(
+                            imageUrl: _ads[index]['image']!,
+                            adText: _ads[index]['text']!,
                           ),
                         ),
-                        Image.network(
-                          _ads[index]['image']!,
-                          width: MediaQuery.of(context).size.width *
-                              0.4, // 50% of the width
-                          height: 100,
-                          fit: BoxFit.cover,
-                        ),
-                      ],
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 18),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE4FCFF), // Background color
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _ads[index]['text']!,
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                const Text(
+                                  'Explore ➔',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Image.network(
+                            _ads[index]['image']!,
+                            width: MediaQuery.of(context).size.width *
+                                0.4, // 50% of the width
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -204,7 +232,7 @@ class _HomePageState extends State<HomePage>
                   width: 8, // Same size for both active and inactive indicators
                   decoration: BoxDecoration(
                     color: _currentAdIndex == index
-                        ? Colors.yellow
+                        ? const Color.fromRGBO(59, 193, 255, 1)
                         : Colors.grey, // Active and inactive colors
                     borderRadius: BorderRadius.circular(4),
                   ),
