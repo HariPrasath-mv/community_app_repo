@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'sign_up_page/signup.dart';
+import 'login.dart';
 import 'pages/home_page/home_page.dart';
 import 'pages/my_unit_page/my_unit_page.dart';
 import 'pages/my_community_page/my_community_page.dart';
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Urbanist', // Set the default font family to Urbanist
+        fontFamily: 'Urbanist',
         textTheme: const TextTheme(
           displayLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
@@ -25,7 +27,11 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
         ),
       ),
-      home: const MainScreen(),
+      home: const SignupPage(), // Start with the signup page
+      routes: {
+        '/main': (context) => const MainScreen(), // Navigation to the main screen
+        '/login': (context) => const LoginPage(), // Navigation to the login screen
+      },
     );
   }
 }

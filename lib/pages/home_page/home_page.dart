@@ -17,19 +17,23 @@ class _HomePageState extends State<HomePage>
 
   final List<Map<String, String>> _ads = [
     {
-      'image': 'https://via.placeholder.com/150',
+      'image':
+          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
       'text': '50% Off on New Fashion Collection!',
     },
     {
-      'image': 'https://via.placeholder.com/150',
+      'image':
+          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
       'text': 'Exclusive Deals for Community Members!',
     },
     {
-      'image': 'https://via.placeholder.com/150',
-      'text': "Upcoming Yoga Session: Don’t Miss Out!",
+      'image':
+          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
+      'text': "Upcoming Yoga Session: Dont Miss Out!",
     },
     {
-      'image': 'https://via.placeholder.com/150',
+      'image':
+          'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E',
       'text': 'Join the Gardening Club today!',
     },
   ];
@@ -112,7 +116,7 @@ class _HomePageState extends State<HomePage>
               onTap: () => _navigateToProfile(context),
               child: const CircleAvatar(
                 backgroundImage: NetworkImage(
-                  'https://via.placeholder.com/150', // Replace with your image URL
+                  'https://unsplash.com/photos/a-woman-holding-a-plate-of-food-GvEqvpX_H4E', // Replace with your image URL
                 ),
               ),
             ),

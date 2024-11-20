@@ -60,6 +60,7 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/facilities/
+    - assets/images/sample.png
     - assets/images/facilities/swimming_pool.png
     - assets/images/facilities/squash_court.png
     - assets/images/facilities/clubhouse.png
@@ -71,6 +72,8 @@ flutter:
     - assets/images/discover/mattress.png
     - assets/images/discover/comic_books.png
     - assets/icons/consumer_service/
+    - assets/icons/sign_up/
+    - assets/icons/sign_up/signup_image.svg
 
   fonts:
     - family: Urbanist
