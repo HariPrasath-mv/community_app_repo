@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import '../Profile_page/profile_page.dart';
 import 'ads_page.dart';
-import 'notification_page.dart'; // Import ProfilePage
+import 'notification_page.dart';
+import '../my_unit_page/dues_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -156,6 +157,7 @@ class _HomePageState extends State<HomePage>
                     onTap: () {
                       // Navigate to AdsPage with the ad details
                       Navigator.push(
+
                         context,
                         MaterialPageRoute(
                           builder: (context) => AdsPage(
@@ -262,9 +264,20 @@ class _HomePageState extends State<HomePage>
     );
   }
 
+  
+
   Widget _buildInfoSection(BuildContext context, String title, String content,
-      IconData icon, Color color) {
-    return Container(
+    IconData icon, Color color) {
+  return GestureDetector(
+    onTap: () {
+      if (title == 'Dues') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DuesPage()),
+        );
+      }
+    },
+    child: Container(
       width: MediaQuery.of(context).size.width * 0.9,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -311,8 +324,10 @@ class _HomePageState extends State<HomePage>
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   Widget _buildGateUpdatesSection() {
     return Padding(

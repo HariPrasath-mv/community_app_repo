@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = [
     HomePage(),
-    const MyUnitPage(),
+    MyUnitPage(),
     MyCommunityPage(),
     BuySellPage(),
     const ConsumerServicePage(),
